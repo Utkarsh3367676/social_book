@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Redirect</title>
+    <script type="text/javascript">
+        // JavaScript for automatic redirection based on user authentication status
+        window.onload = function() {
+            {% if user.is_authenticated %}
+                // Redirect to a logged-in page (example: profile page)
+                window.location.href = "{% url 'dashboard' %}";
+            {% else %}
+                // Redirect to login page
+                window.location.href = "{% url 'login' %}";
+            {% endif %}
+        };
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Application</h1>
+    <p>If you are not redirected automatically, please <a href="{% url 'login' %}">click here</a>.</p>
+</body>
+</html>

@@ -52,11 +52,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'social_book.urls'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Add this line
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,7 +70,6 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'social_book.wsgi.application'
 
 
@@ -101,6 +102,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -118,6 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

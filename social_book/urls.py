@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
+from django.shortcuts import render
 
 def home_view(request):
-    return HttpResponse("<h1>Welcome to Social Book!</h1>")
+    return render(request, 'accounts/index.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
