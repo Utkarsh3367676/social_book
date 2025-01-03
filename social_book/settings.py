@@ -13,8 +13,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+
+MEDIA_URL = '/media/'  # The URL prefix for accessing media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # The actual directory for storing media files
 
 
 # Quick-start development settings - unsuitable for production
@@ -122,7 +129,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-LOGIN_URL = 'login'
+
+
+# Default URL for login
+LOGIN_URL = '/accounts/login/'  # Redirects users to the login page if not authenticated
+
+# Default URL after login (used if no 'next' parameter is provided)
+LOGIN_REDIRECT_URL = '/accounts/dashboard/'  # Change this to the desired default page after login
+
+# Optional: Logout redirect URL
+LOGOUT_REDIRECT_URL = '/'  # Redirects to the home page (or any page) after logout
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

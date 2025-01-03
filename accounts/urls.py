@@ -9,5 +9,8 @@ urlpatterns = [
     path('dashboard/',views.dashboard,name='dashboard'),
     path('logout/', views.logout_view, name='logout'),
     path('authors-and-sellers/', views.authors_and_sellers_view, name='authors_and_sellers'),
+    path('upload-books/', views.upload_books_view, name='upload_books'),
+    path('uploaded-files/', views.uploaded_files_view, name='uploaded_files'),
 
 ]
+
