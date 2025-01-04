@@ -10,3 +10,5 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = UserAdmin.add_fieldsets + (
         (None, {'fields': ('public_visibility', 'birth_year', 'address')}),
     )
+
+
