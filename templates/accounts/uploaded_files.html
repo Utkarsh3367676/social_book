@@ -25,10 +25,10 @@
                 <tr>
                     <td>{{ file.title }}</td>
                     <td>{{ file.description }}</td>
-                    <td>{{ file.get_visibility_display }}</td>
+                    <td>{{ file.visibility }}</td>  <!-- Adjusted to use dictionary key directly -->
                     <td>{{ file.cost }}</td>
                     <td>{{ file.year_published }}</td>
-                    <td><a href="{{ file.file.url }}" target="_blank">Download</a></td>
+                    <td><a href="{{ file.file }}" target="_blank">Download</a></td>  <!-- Adjusted to use dictionary key -->
                     <td>{{ file.uploaded_at }}</td>
                 </tr>
             {% empty %}

@@ -96,4 +96,5 @@ def upload_books_view(request):
 def uploaded_files_view(request):
     # Fetch files for the logged-in user using SQLAlchemy
     uploaded_files = get_uploaded_files(user_id=request.user.id)  # Pass the logged-in user's ID to the function
+
     return render(request, 'accounts/uploaded_files.html', {'uploaded_files': uploaded_files})
