@@ -15,6 +15,8 @@ from .serializers import UploadedFileSerializer
 from social_book.db.queries import get_uploaded_files
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
+from django.core.mail import send_mail
+
 
 
 def index(request):
@@ -38,6 +40,17 @@ def login_view(request):
             login(request, user)
             request.session['auth_token'] = str(Token.objects.get_or_create(user=user)[0])
 
+            # Send login email notification
+            subject = "Login Notification"
+            message = f"Hello {user.username},\n\nYou have successfully logged into your account on {now().strftime('%Y-%m-%d %H:%M:%S')}."
+            from_email = 'utkarshsingh2622@gmail.com'
+            recipient_list = [user.email]  # Use the user's email address
+
+            try:
+                send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+            except Exception as e:
+                print(f"Error sending email: {e}")
+
             # Handle AJAX requests
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'redirect_url': next_url})
@@ -53,6 +66,7 @@ def login_view(request):
         return redirect('dashboard')
 
     return render(request, 'accounts/login.html', {'next': next_url})
+
 
 
 @login_required
