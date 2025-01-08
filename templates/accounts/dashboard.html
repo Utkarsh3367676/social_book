@@ -30,6 +30,24 @@
         gtag('js', new Date());
         gtag('config', 'UA-119386393-1');
     </script>
+    <style>
+        /* Style for the logout form to make it look like a link */
+        .logout-form {
+            display: inline;
+        }
+        .logout-button {
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logout-button:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body class="dashboard-page">
     <div class="dashboard-header box-shadow">
@@ -42,7 +60,12 @@
             <div class="user-menu">
                 <ul>
                     <li><a href="">Profile</a></li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li>
+                        <form method="post" action="{% url 'logout' %}" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-button">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>

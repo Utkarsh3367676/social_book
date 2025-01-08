@@ -7,6 +7,7 @@ class UploadedFile(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, nullable=False)
+    
     title = Column(String, nullable=False)
     description = Column(String, nullable=True)
     visibility = Column(Boolean, default=True)

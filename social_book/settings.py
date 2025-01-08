@@ -49,12 +49,13 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'djoser',
+    'rest_framework.authtoken',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -71,6 +72,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+DJOSER = {
+    'LOGOUT_ON_PASSWORD_CHANGE': True,
+    'SERIALIZERS': {},
+    'TOKEN_MODEL': 'rest_framework.authtoken.models.Token',  # Default is Token model
+}
+
 
 ROOT_URLCONF = 'social_book.urls'
 STATIC_URL = '/static/'

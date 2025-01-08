@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,5 +20,42 @@
 <body>
     <h1>Welcome to the Application</h1>
     <p>If you are not redirected automatically, please <a href="{% url 'login' %}">click here</a>.</p>
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Redirect</title>
+</head>
+<body>
+    <h1>Welcome to the Application</h1>
+    <p>Redirecting...</p>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            // Check if user is logged in by attempting to make an authenticated request
+            fetch('/dashboard/', {
+                method: 'GET',
+                credentials: 'same-origin',
+                headers: {
+                    'Accept': 'application/json',
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/accounts/dashboard/';
+                } else {
+                    window.location.href = '/accounts/login/';
+                }
+            })
+            .catch(error => {
+                window.location.href = '/login/';
+            });
+        });
+    </script>
 </body>
 </html>

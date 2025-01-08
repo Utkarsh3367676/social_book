@@ -47,40 +47,42 @@
                         <div class="login-title">
                             <h2 class="text-center text-primary">Login To DeskApp</h2>
                         </div>
-                        <form method="post" action="{% url 'login' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="next" value="{{ next }}">
-                            <div class="input-group custom">
-                                <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" required>
-                                <div class="input-group-append custom">
-                                    <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+                                            <!-- Replace your existing form in login.html with this -->
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                        <div class="input-group custom">
+                            <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" required>
+                            <div class="input-group-append custom">
+                                <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+                            </div>
+                        </div>
+                        <div class="input-group custom">
+                            <input type="password" name="password" class="form-control form-control-lg" placeholder="**********" required>
+                            <div class="input-group-append custom">
+                                <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                            </div>
+                        </div>
+                        <div class="row pb-30">
+                            <div class="col-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Remember</label>
                                 </div>
                             </div>
-                            <div class="input-group custom">
-                                <input type="password" name="password" class="form-control form-control-lg" placeholder="**********" required>
-                                <div class="input-group-append custom">
-                                    <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
-                                </div>
+                            <div class="col-6">
+                                <div class="forgot-password"><a href="{% url 'forgot_password' %}">Forgot Password</a></div>
                             </div>
-                            <div class="row pb-30">
-                                <div class="col-6">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember</label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="forgot-password"><a href="{% url 'forgot_password' %}">Forgot Password</a></div>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+                                <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OR</div>
+                                <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'register' %}">Register To Create Account</a>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
-                                    <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OR</div>
-                                    <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'register' %}">Register To Create Account</a>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
